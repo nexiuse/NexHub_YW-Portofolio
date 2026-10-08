@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01 HOME — NEX / YW</title>
+  <meta name="description" content="Connecting Systems & Logic: Yoga Wahyu (Nex) is a Game Systems Architect, Lua Specialist, and Creative Full-Stack Developer." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Google Fonts: Space Grotesk (Secondary/Display Font), Plus Jakarta Sans (Primary/Body Font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <style>
+    /* ========================================================
+       STEALTH LUXURY DARK PALETTE (Linear / Apple Pro / Bespoke Studio)
+       Obsidian Jet Black, Pure Crisp White, Refined Slate, & Subtle Royal Violet
+       ======================================================== */
+    :root {
+      --canvas-bg: #09090B;              /* Deep Obsidian Black Canvas */
+      --surface-1: #111115;              /* Clean Charcoal Surface */
+      --surface-2: #16161D;              /* Subtle Elevated Surface */
+      --surface-card: #0F0E14;           /* Refined Card Surface */
+
+      /* Ultra-delicate micro-borders (Never harsh neon lines) */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.14);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --border-dashed: 0.8px dashed rgba(255, 255, 255, 0.12);
+
+      /* High-contrast Swiss Typography */
+      --text-pure: #FFFFFF;              /* Headlines, Hero Numbers */
+      --text-high: #F4F4F5;              /* Primary Labels, Active states */
+      --text-medium: #D4D4D8;            /* Body & Descriptions (Zinc-300) */
+      --text-muted: #A1A1AA;             /* Secondary & Metadata (Zinc-400) */
+      --text-caption: #71717A;           /* Micro labels, Tickers (Zinc-500) */
+
+      /* Royal Violet Accent — Used strictly <5% for high-end intentional accents */
+      --accent-violet: #8B5CF6;
+      --accent-violet-deep: #7C3AED;
+      --accent-violet-glow: rgba(124, 58, 237, 0.25);
+      --accent-violet-soft: #C4B5FD;
+
+      /* Mapping variables */
+      --neutral-100: var(--canvas-bg);
+      --neutral-200: var(--surface-1);
+      --neutral-300: var(--border-subtle);
+      --neutral-400: var(--accent-violet-soft);
+      --neutral-500: var(--text-muted);
+      --neutral-600: var(--text-pure);
+      --chromata-400: var(--accent-violet);
+      --chromata-600: var(--accent-violet-deep);
+
+      --font-primary: 'Plus Jakarta Sans', sans-serif;
+      --font-secondary: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      --border-style: 0.8px solid var(--border-subtle);
+      --border-radius: 3.75rem;
+      --header-height: 4.5rem;
+      --width-content: min(1320px, 92vw);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--canvas-bg);
+      color: var(--text-pure);
+    }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-color: var(--canvas-bg);
+      color: var(--text-pure);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--accent-violet-deep);
+      color: #FFFFFF;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Container Utility */
+    .cb-container {
+      width: var(--width-content);
+      margin-inline: auto;
+    }
+
+    /* ========================================================
+       GERTIX PILL BUTTON COMPONENT (.cb-button)
+       Dual-capsule with separated arrow button
+       ======================================================== */
+    .cb-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: lowercase;
+      color: #FFFFFF;
+      transition: all 0.25s ease;
+    }
+
+    .cb-button__title {
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--border-radius);
+      background-color: var(--surface-1);
+      border: 1px solid var(--border-medium);
+      color: var(--text-high);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .cb-button__arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.85rem;
+      height: 2.85rem;
+      border-radius: 50%;
+      background-color: var(--surface-1);
+      border: 1px solid var(--border-medium);
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .cb-button:hover .cb-button__title {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+    .cb-button:hover .cb-button__arrow {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+
+    /* Primary on dark hero */
+    .hero-btn {
+      display: inline-flex;
+      align-items: stretch;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+    .hero-btn .cb-button__title {
+      background-color: #FFFFFF;
+      color: #09090B;
+      padding: 0.95rem 2.25rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 2px;
+      border: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
+    }
+    .hero-btn .cb-button__arrow {
+      background-color: #FFFFFF;
+      color: #09090B;
+      width: 3.25rem;
+      height: auto;
+      border-radius: 2px;
+      font-size: 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    .hero-btn:hover .cb-button__title {
+      background-color: #F4F4F5;
+      color: #09090B;
+      box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25);
+    }
+    .hero-btn:hover .cb-button__arrow {
+      background-color: #F4F4F5;
+      color: #09090B;
+      transform: translateX(4px);
+    }
+
+    /* ========================================================
+       SITE HEADER (.cb-site-header)
+       Starts transparent over dark hero, frosted obsidian on scroll
+       ======================================================== */
+    .cb-site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border-bottom: 0.8px dashed rgba(255, 255, 255, 0.12);
+      transition: background-color 0.35s ease, border-bottom 0.35s ease;
+    }
+
+    .cb-site-header.is-scrolled {
+      background-color: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 0.8px solid var(--border-subtle);
+    }
+
+    .cb-site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: var(--width-content);
+      margin-inline: auto;
+    }
+
+    .cb-site-header__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-secondary);
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: lowercase;
+      color: #FFFFFF;
+      transition: color 0.3s ease;
+    }
+    .cb-site-header.is-scrolled .cb-site-header__logo {
+      color: #FFFFFF;
+    }
+
+    .cb-site-header__nav {
+      display: flex;
+      align-items: center;
+      gap: 1.85rem;
+      list-style: none;
+    }
+
+    .cb-site-header__nav a {
+      font-family: var(--font-primary);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .cb-site-header__nav a:hover {
+      color: #FFFFFF;
+    }
+    .cb-site-header.is-scrolled .cb-site-header__nav a {
+      color: var(--text-muted);
+    }
+    .cb-site-header.is-scrolled .cb-site-header__nav a:hover {
+      color: #FFFFFF;
+    }
+
+    /* Active Pill Item: Sleek frosted dark glass pill */
+    .nav-active-pill {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      color: #FFFFFF !important;
+      padding: 0.4rem 1.15rem !important;
+      border-radius: 9999px !important;
+      font-weight: 600 !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      box-shadow: none !important;
+    }
+    .cb-site-header.is-scrolled .nav-active-pill {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* LANGUAGE SWITCHER (ID / EN) */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 0.25rem 0.55rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+    .cb-site-header.is-scrolled .lang-switcher {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-caption);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.15rem 0.45rem;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+    .cb-site-header.is-scrolled .lang-btn {
+      color: var(--text-caption);
+    }
+    .lang-btn:hover {
+      color: #FFFFFF;
+    }
+    .cb-site-header.is-scrolled .lang-btn:hover {
+      color: #FFFFFF;
+    }
+    .lang-btn.is-active {
+      color: #FFFFFF !important;
+      background: var(--accent-violet-deep) !important;
+      font-weight: 700;
+      box-shadow: 0 2px 10px var(--accent-violet-glow);
+    }
+    .cb-site-header.is-scrolled .lang-btn.is-active {
+      color: #FFFFFF !important;
+      background: var(--accent-violet-deep) !important;
+    }
+    .lang-divider {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.68rem;
+    }
+    .cb-site-header.is-scrolled .lang-divider {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ========================================================
+       1. HERO SECTION (.cb-block--hero-frontpage)
+       ======================================================== */
+    .cb-block--hero-frontpage {
+      position: relative;
+      overflow: hidden;
+      height: 100dvh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      background-color: #0b0c0e;
+      color: #FFFFFF;
+    }
+
+    .hero-frontpage__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .cb-block--hero-frontpage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.42);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-frontpage__content {
+      position: relative;
+      z-index: 2;
+      width: var(--width-content);
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-block: 4rem 6rem;
+    }
+
+    .hero-frontpage__heading {
+      color: #FFFFFF;
+      font-family: var(--font-secondary);
+      text-shadow: 0 0 22px rgba(255, 255, 255, 0.4);
+      font-size: clamp(2.6rem, 5.8vw, 4.4rem);
+      font-style: normal;
+      font-weight: 300;
+      line-height: 112%;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      max-width: 22ch;
+    }
+
+    .hero-frontpage__intro {
+      width: min(560px, 92%);
+      font-family: var(--font-primary);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 0.5rem;
+    }
+
+    /* HERO TICKER */
+    .hero-frontpage__ticker {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      overflow: hidden;
+      border-top: 0.6px dashed rgba(255, 255, 255, 0.2);
+      padding-block: 1.15rem;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-frontpage__ticker-track {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      width: max-content;
+      animation: hero-frontpage-ticker 32s linear infinite;
+    }
+    .hero-frontpage__ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .hero-frontpage__ticker-item,
+    .hero-frontpage__ticker-sep {
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 300;
+    }
+    .hero-frontpage__ticker-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 400;
+    }
+
+    @keyframes hero-frontpage-ticker {
+      to { transform: translateX(-50%); }
+    }
+
+    /* ========================================================
+       2. STATEMENT TEXT & SEPARATOR WITH CROSSHAIRS
+       ======================================================== */
+    .cb-block--statement-text {
+      padding-block: 7.5rem 6rem;
+      display: flex;
+      flex-flow: column;
+      gap: 5.5rem;
+      width: var(--width-content);
+      margin-inline: auto;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    .separator svg {
+      flex-shrink: 0;
+    }
+    .separator > hr {
+      flex: 1;
+      border: none;
+      border-top: 0.8px solid var(--border-subtle);
+    }
+
+    .statement-text__text {
+      font-family: var(--font-secondary);
+      font-size: clamp(1.15rem, 1.75vw, 1.35rem);
+      font-weight: 300;
+      line-height: 220%;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      letter-spacing: 0.03em;
+      max-width: min(980px, 100%);
+      margin-inline: clamp(0rem, 4vw, 5rem);
+    }
+
+    .statement-text__text b,
+    .statement-text__text strong {
+      font-family: var(--font-primary);
+      font-weight: 500;
+      font-size: 0.88em;
+      padding: 0.32rem 0.95rem;
+      white-space: nowrap;
+      border-radius: var(--border-radius);
+      border: 0.8px solid rgba(255, 255, 255, 0.14);
+      background-color: rgba(255, 255, 255, 0.04);
+      color: #FFFFFF;
+      cursor: default;
+      transition: all 0.3s ease;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0.1rem 0.25rem;
+    }
+
+    .statement-text__text b:hover,
+    .statement-text__text strong:hover {
+      background-color: rgba(124, 58, 237, 0.22);
+      border-color: rgba(167, 139, 250, 0.45);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================
+       3. KPI GALLERY (EXACT 4-CARD BORDER GRID WITH CROSSHAIR SVGS)
+       ======================================================== */
+    .kpi-gallery__wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .kpi-gallery__content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 0.8px solid var(--border-subtle);
+      border-left: 0.8px solid var(--border-subtle);
+    }
+
+    @media (max-width: 900px) {
+      .kpi-gallery__content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 550px) {
+      .kpi-gallery__content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kpi-gallery__card {
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      padding-block: 4.5rem;
+      padding-inline: 1.5rem;
+      border-right: 0.8px solid var(--border-subtle);
+      border-bottom: 0.8px solid var(--border-subtle);
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.18);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .kpi-gallery__card:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+      border-color: var(--border-medium);
+    }
+
+    .kpi-gallery__card svg.cross {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .kpi-gallery__card svg.cross.top-left { top: -12px; left: -12px; }
+    .kpi-gallery__card svg.cross.top-right { top: -12px; right: -12px; }
+    .kpi-gallery__card svg.cross.bottom-left { bottom: -12px; left: -12px; }
+    .kpi-gallery__card svg.cross.bottom-right { bottom: -12px; right: -12px; }
+
+    .kpi-gallery__card-content {
+      text-align: center;
+    }
+
+    .kpi__name {
+      font-family: var(--font-secondary);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 120%;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      display: inline-block;
+      transform-origin: center center;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.35s ease;
+    }
+
+    .kpi__label {
+      font-family: var(--font-primary);
+      font-size: 0.85rem;
+      line-height: 130%;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 0.65rem;
+      transition: transform 0.35s ease, color 0.35s ease;
+    }
+
+    .kpi-gallery__card:hover .kpi__name {
+      transform: scale(1.1);
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+    .kpi-gallery__card:hover .kpi__label {
+      transform: translateY(4px);
+      color: #FFFFFF;
+    }
+
+    /* ========================================================
+       4. SCROLL-DRIVEN TEXT ANIMATION (FULL SERVICE DUAL-COLUMN)
+       Sticky headline with architectural card
+       ======================================================== */
+    .cb-block--text-animation {
+      padding-block: 7.5rem;
+      width: var(--width-content);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      border-top: 0.8px solid var(--border-subtle);
+    }
+
+    @media (max-width: 992px) {
+      .cb-block--text-animation {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .text-animation__sticky {
+      position: sticky;
+      top: 6.5rem;
+      align-self: start;
+    }
+
+    .text-animation__subline {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-violet-soft);
+      margin-bottom: 1rem;
+    }
+
+    .text-animation__heading {
+      font-family: var(--font-secondary);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 300;
+      line-height: 120%;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 2rem;
+    }
+
+    .text-animation__reveal {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .text-animation__text {
+      font-family: var(--font-primary);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-medium);
+      font-weight: 300;
+    }
+
+    .text-animation__text strong {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* Right column visual architecture */
+    .text-animation__right-card {
+      border: 1px solid var(--border-subtle);
+      background-color: var(--surface-1);
+      padding: 3rem 2.5rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 480px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .text-animation__right-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* ========================================================
+       5. FULLBLEED STICKY SNAP CARDS (.business-areas--snap)
+       Stacked fullscreen project cards
+       ======================================================== */
+    .cb-block--business-areas {
+      position: relative;
+      padding-block: 2rem 6rem;
+    }
+
+    .business-areas__section-title {
+      width: var(--width-content);
+      margin-inline: auto;
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .business-areas__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: var(--width-content);
+      margin-inline: auto;
+    }
+
+    .business-areas__card {
+      position: sticky;
+      top: calc(var(--header-height) + 1.5rem);
+      min-height: 72vh;
+      border-radius: 1.25rem;
+      padding: clamp(2rem, 5vw, 4.5rem);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    @media (max-width: 900px) {
+      .business-areas__card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 2.5rem 1.75rem;
+      }
+    }
+
+    .card--one {
+      background-color: #101015;
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.09);
+      top: calc(var(--header-height) + 1rem);
+    }
+    .card--two {
+      background-color: #13121A;
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.1);
+      top: calc(var(--header-height) + 2.5rem);
+    }
+    .card--three {
+      background-color: #0E0E12;
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.08);
+      top: calc(var(--header-height) + 4rem);
+    }
+
+    .business-areas__card .cb-button__title {
+      background-color: #FFFFFF;
+      color: #09090B;
+      border-color: transparent;
+      font-weight: 700;
+    }
+    .business-areas__card .cb-button__arrow {
+      background-color: #FFFFFF;
+      color: #09090B;
+      border-color: transparent;
+    }
+    .business-areas__card .cb-button:hover .cb-button__title {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+    .business-areas__card .cb-button:hover .cb-button__arrow {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+
+    .business-areas__number {
+      font-family: var(--font-secondary);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent-violet-soft);
+      opacity: 0.9;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .business-areas__title {
+      font-family: var(--font-secondary);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 115%;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+    }
+
+    .business-areas__labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .business-areas__label {
+      font-family: var(--font-primary);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-high);
+      white-space: nowrap;
+    }
+
+    .business-areas__excerpt {
+      font-family: var(--font-primary);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--text-medium);
+      margin-bottom: 2.5rem;
+      max-width: 55ch;
+    }
+
+    .business-areas__image-wrap {
+      border-radius: 0.85rem;
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #08080A;
+      border: 1px solid var(--border-subtle);
+    }
+    .business-areas__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ========================================================
+       6. POST GALLERY (VERTICAL DASHED CARDS CAROUSEL)
+       ======================================================== */
+    .cb-block--post-gallery {
+      padding-block: 7.5rem 5rem;
+      width: var(--width-content);
+      margin-inline: auto;
+      border-top: 0.8px solid var(--border-subtle);
+    }
+
+    .post-gallery__heading {
+      font-family: var(--font-secondary);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 300;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .post-gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: var(--border-dashed);
+      border-bottom: var(--border-dashed);
+    }
+
+    @media (max-width: 900px) {
+      .post-gallery__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .post-gallery__item {
+      aspect-ratio: 400 / 600;
+      border-right: var(--border-dashed);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.3s ease;
+      background-color: var(--canvas-bg);
+    }
+    .post-gallery__item:first-child {
+      border-left: var(--border-dashed);
+    }
+    .post-gallery__item:hover {
+      background-color: var(--surface-1);
+    }
+
+    .post-gallery__item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-violet-soft);
+      padding-bottom: 1rem;
+    }
+    .post-gallery__item-header span:last-child {
+      color: var(--text-caption);
+    }
+
+    .post-gallery__thumb {
+      flex: 1;
+      aspect-ratio: 16 / 10;
+      border-radius: 0.85rem;
+      overflow: hidden;
+      margin-block: 1rem;
+      background: #08080B;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: inset(0.4rem round 12px);
+      transition: clip-path 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .post-gallery__item:hover .post-gallery__thumb {
+      clip-path: inset(0.1rem round 16px);
+      border-color: rgba(167, 139, 250, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .post-gallery__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .post-gallery__item:hover .post-gallery__thumb img {
+      transform: scale(1.06);
+    }
+
+    .post-gallery__footer h4 {
+      font-family: var(--font-secondary);
+      font-size: 1.35rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: #FFFFFF;
+    }
+    .post-gallery__footer p {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ========================================================
+       7. CONTACT SECTION (EXACT GERTIX 2-COLUMN WITH DASHED FORM)
+       ======================================================== */
+    .cb-block--contact {
+      padding-block: 6rem 8rem;
+      width: var(--width-content);
+      margin-inline: auto;
+      border-top: 0.8px solid var(--border-subtle);
+    }
+
+    .contact__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 7rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact__inner {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .contact__heading {
+      font-family: var(--font-secondary);
+      font-size: clamp(2.2rem, 4vw, 3.25rem);
+      font-weight: 300;
+      line-height: 118%;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact__text {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--text-medium);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact__details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding: 1.5rem;
+      background-color: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    .contact__detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-high);
+      transition: all 0.25s ease;
+    }
+    .contact__detail:hover {
+      background-color: var(--accent-violet-deep);
+      color: #FFFFFF;
+      border-color: var(--accent-violet);
+      box-shadow: 0 4px 16px var(--accent-violet-glow);
+    }
+
+    /* RIGHT COLUMN: DASHED INPUT FORM */
+    .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact__form-field {
+      border-top: var(--border-dashed);
+      padding-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-top-color 0.2s ease;
+    }
+    .contact__form-field:hover,
+    .contact__form-field:focus-within {
+      border-top-color: var(--accent-violet-soft);
+      border-top-style: solid;
+    }
+
+    .contact__form-field label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .contact__form-field:focus-within label {
+      color: var(--accent-violet-soft);
+    }
+
+    .contact__form-field input,
+    .contact__form-field textarea {
+      border: none;
+      background: transparent;
+      font-family: var(--font-primary);
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      caret-color: var(--accent-violet-soft);
+      outline: none;
+      padding-block: 0.4rem;
+    }
+    .contact__form-field input::placeholder,
+    .contact__form-field textarea::placeholder {
+      color: var(--text-caption);
+    }
+    .contact__form-field textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    #submitBtn .cb-button__title {
+      background-color: #FFFFFF;
+      color: #09090B;
+      font-weight: 700;
+      border-color: transparent;
+    }
+    #submitBtn .cb-button__arrow {
+      background-color: #FFFFFF;
+      color: #09090B;
+      border-color: transparent;
+    }
+    #submitBtn:hover .cb-button__title {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+    #submitBtn:hover .cb-button__arrow {
+      background-color: var(--accent-violet-deep);
+      border-color: var(--accent-violet);
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px var(--accent-violet-glow);
+    }
+
+    /* ========================================================
+       8. FOOTER
+       ======================================================== */
+    .cb-site-footer {
+      border-top: 0.8px solid var(--border-subtle);
+      padding-block: 2.5rem;
+      width: var(--width-content);
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-caption);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cb-site-footer a {
+      color: var(--accent-violet-soft);
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+    .cb-site-footer a:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .cb-site-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cb-site-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= TOP HEADER NAV ================= -->
+  <header class="cb-site-header" id="siteHeader">
+    <div class="cb-site-header__inner">
+      <a href="#" class="cb-site-header__logo">
+        <span>nex<span style="opacity: 0.5;">/</span>yw</span>
+      </a>
+
+      <ul class="cb-site-header__nav">
+        <li><a href="#manifest" class="nav-active-pill" data-i18n="nav_about">01 TENTANG</a></li>
+        <li><a href="#services" data-i18n="nav_services">02 LAYANAN JASA</a></li>
+        <li><a href="#systems" data-i18n="nav_systems">03 PRODUK & KARYA</a></li>
+        <li><a href="#collective" data-i18n="nav_exp">04 PENGALAMAN</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">05 KONTAK & REKRUT</a></li>
+      </ul>
+
+      <!-- Language Switcher Pill -->
+      <div class="lang-switcher">
+        <button type="button" class="lang-btn is-active" id="lang-id" onclick="setLanguage('id')">ID</button>
+        <span class="lang-divider">/</span>
+        <button type="button" class="lang-btn" id="lang-en" onclick="setLanguage('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 1. HERO FRONTPAGE (EXACT GERTIX VIDEO HERO) ================= -->
+  <section class="cb-block--hero-frontpage">
+    <!-- Exact Gertix Studio Futuristic Cube & Hand Video -->
+    <video class="hero-frontpage__video" autoplay muted loop playsinline preload="auto">
+      <source src="hero_video.mp4" type="video/mp4">
+      <source src="https://gertix.studio/wp-content/uploads/2026/06/Saelis_httpss.mj_.runDOtrnOcqL84_a_futuristic_cube_slowly_floa_6e35c185-9608-4af5-b9fe-42c4c049f61a_2.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-frontpage__content">
+      <h1 class="hero-frontpage__heading">
+        CONNECTING LOGIC,<br />BUSINESS & CODE.
+      </h1>
+
+      <p class="hero-frontpage__intro" data-i18n="hero_intro">
+        Halo! Saya <strong>Yoga Wahyu R. P. (Nex / YW)</strong> — Memadukan kedisiplinan kerja profesional dari dunia perbankan (Ex-Marketing Bank Syariah Indonesia) dengan kapabilitas Software &amp; Lua Development. Melayani jasa pembuatan website modern, pembuatan custom script Roblox, dan siap berkontribusi secara profesional di dunia kerja.
+      </p>
+
+      <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a class="cb-button hero-btn" href="#services">
+          <span class="cb-button__title" data-i18n="hero_btn_services">LIHAT JASA &amp; PORTOFOLIO</span>
+          <span class="cb-button__arrow">→</span>
+        </a>
+        <a class="cb-button hero-btn" href="#contact">
+          <span class="cb-button__title" data-i18n="hero_btn_contact">HUBUNGI / REKRUT SAYA</span>
+          <span class="cb-button__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- HERO BOTTOM TICKER (MARQUEE WITH DASHED TOP BORDER) -->
+    <div class="hero-frontpage__ticker">
+      <div class="hero-frontpage__ticker-track">
+        <span class="hero-frontpage__ticker-item">JASA PEMBUATAN WEBSITE</span>
+        <span class="hero-frontpage__ticker-sep">*</span>
+        <span class="hero-frontpage__ticker-item">CUSTOM SCRIPT ROBLOX (LUA)</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+        <span class="hero-frontpage__ticker-item">EX-MARKETING BANK SYARIAH INDONESIA</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+        <span class="hero-frontpage__ticker-item">FOUNDER NEXHUB COMMUNITY</span>
+        <span class="hero-frontpage__ticker-sep">→</span>
+        <span class="hero-frontpage__ticker-item">CLIENT NEGOTIATION &amp; RETENTION</span>
+        <span class="hero-frontpage__ticker-sep">→</span>
+        <span class="hero-frontpage__ticker-item">ZERO-LATENCY AUTOMATION</span>
+        <span class="hero-frontpage__ticker-sep">*</span>
+        <span class="hero-frontpage__ticker-item">RESPONSIVE UI/UX DESIGN</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+        <!-- Duplicated track for seamless infinite marquee loop -->
+        <span class="hero-frontpage__ticker-item">JASA PEMBUATAN WEBSITE</span>
+        <span class="hero-frontpage__ticker-sep">*</span>
+        <span class="hero-frontpage__ticker-item">CUSTOM SCRIPT ROBLOX (LUA)</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+        <span class="hero-frontpage__ticker-item">EX-MARKETING BANK SYARIAH INDONESIA</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+        <span class="hero-frontpage__ticker-item">FOUNDER NEXHUB COMMUNITY</span>
+        <span class="hero-frontpage__ticker-sep">→</span>
+        <span class="hero-frontpage__ticker-item">CLIENT NEGOTIATION &amp; RETENTION</span>
+        <span class="hero-frontpage__ticker-sep">→</span>
+        <span class="hero-frontpage__ticker-item">ZERO-LATENCY AUTOMATION</span>
+        <span class="hero-frontpage__ticker-sep">*</span>
+        <span class="hero-frontpage__ticker-item">RESPONSIVE UI/UX DESIGN</span>
+        <span class="hero-frontpage__ticker-sep">×</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. STATEMENT TEXT & SEPARATOR WITH CROSSHAIRS ================= -->
+  <section id="manifest" class="cb-block--statement-text">
+    <div class="separator">
+      <!-- Left Crosshair SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M11.9951 0V24M24 11.995L0 11.995" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <hr />
+      <!-- Right Crosshair SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M11.9951 0V24M24 11.995L0 11.995" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </div>
+
+    <!-- Statement with Interactive Pill Badges -->
+    <header class="statement-text__text">
+      <p data-i18n="statement_text">
+        SAYA MENGGABUNGKAN KEDISIPLINAN DARI DUNIA <strong>PERBANKAN SYARIAH (BSI)</strong> DENGAN KEAHLIAN TEKNIS <strong>WEB DEVELOPMENT</strong> DAN <strong>LUA SCRIPTING</strong>. SEBAGAI FOUNDER DARI <strong>NEXHUB COMMUNITY</strong>, SAYA MEMBUKA LAYANAN <strong>JASA PEMBUATAN WEBSITE</strong>, PEMBUATAN <strong>CUSTOM SCRIPT ROBLOX</strong>, SERTA TERBUKA UNTUK <strong>PELUANG KARIER PROFESIONAL</strong> DENGAN ETOS KERJA TERUJI.
+      </p>
+    </header>
+
+    <!-- ================= 3. KPI / STATS GALLERY (4-CARD GRID) ================= -->
+    <div id="stats" class="kpi-gallery__wrapper">
+      <div class="kpi-gallery__content">
+        
+        <!-- KPI Card 1 -->
+        <div class="kpi-gallery__card">
+          <svg class="cross top-left" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross top-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross bottom-left" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross bottom-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <div class="kpi-gallery__card-content">
+            <p class="kpi__name">01 Thn</p>
+            <p class="kpi__label" data-i18n="kpi_bsi">Pengalaman Marketing di BSI</p>
+          </div>
+        </div>
+
+        <!-- KPI Card 2 -->
+        <div class="kpi-gallery__card">
+          <svg class="cross top-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross bottom-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <div class="kpi-gallery__card-content">
+            <p class="kpi__name">15+</p>
+            <p class="kpi__label" data-i18n="kpi_roblox">Script &amp; Modul Roblox Dirilis</p>
+          </div>
+        </div>
+
+        <!-- KPI Card 3 -->
+        <div class="kpi-gallery__card">
+          <svg class="cross top-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross bottom-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <div class="kpi-gallery__card-content">
+            <p class="kpi__name">100k+</p>
+            <p class="kpi__label" data-i18n="kpi_users">Total Eksekusi &amp; Pengguna</p>
+          </div>
+        </div>
+
+        <!-- KPI Card 4 -->
+        <div class="kpi-gallery__card">
+          <svg class="cross top-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg class="cross bottom-right" viewBox="0 0 24 24" fill="none"><path d="M12 0V24M24 12L0 12" stroke="currentColor" stroke-width="1.2"/></svg>
+          <div class="kpi-gallery__card-content">
+            <p class="kpi__name">100%</p>
+            <p class="kpi__label" data-i18n="kpi_commit">Komitmen Kualitas &amp; Klien</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. DUAL COLUMN: DISIPLIN KERJA & KEAHLIAN ================= -->
+  <section id="collective" class="cb-block--text-animation">
+    <div class="text-animation__sticky">
+      <p class="text-animation__subline" data-i18n="pillar_sub">DISIPLIN KORPORAT &amp; KEAHLIAN TEKNIS</p>
+      <h2 class="text-animation__heading" data-i18n="pillar_title">TIGA PILAR UTAMA. <br> SATU INTEGRITAS.</h2>
+      
+      <div class="text-animation__reveal">
+        <div class="text-animation__text">
+          <p data-i18n="pillar_p1">Kombinasi unik antara pemahaman bisnis, etos kerja perbankan, dan penguasaan kode tingkat lanjut:</p>
+        </div>
+        <div class="text-animation__text">
+          <p data-i18n="pillar_p2">Dari pengalaman di <strong>Bank Syariah Indonesia (BSI)</strong>, saya membawa disiplin kerja ketat, komunikasi profesional dengan nasabah/klien, serta orientasi target yang terukur.</p>
+        </div>
+        <div class="text-animation__text">
+          <p data-i18n="pillar_p3">Di bidang teknologi, saya memimpin <strong>NexHub Community</strong>, menyediakan <strong>Jasa Pembuatan Website</strong> modern, serta <strong>Jasa Pembuatan Script Roblox</strong> dengan performa stabil dan zero-latency.</p>
+        </div>
+        
+        <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a class="cb-button" href="#contact">
+            <span class="cb-button__title" data-i18n="pillar_btn_discuss">diskusikan proyek / rekrut</span>
+            <span class="cb-button__arrow">↗</span>
+          </a>
+          <a class="cb-button" href="https://discord.gg/UgtRrcjxh3" target="_blank">
+            <span class="cb-button__title" data-i18n="pillar_btn_join">join komunitas nexhub</span>
+            <span class="cb-button__arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side Blueprint Card -->
+    <div class="text-animation__right-card">
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--neutral-400);">
+        [ PROVEN COMPETENCIES // 2026 ]
+      </div>
+
+      <div style="margin-block: auto; padding-block: 2rem;">
+        <div style="font-family: var(--font-secondary); font-size: 2rem; text-transform: uppercase; line-height: 1.2; margin-bottom: 1rem; color: var(--neutral-600);">
+          BUSINESS AGILITY &amp; <br />TECHNICAL DEPTH
+        </div>
+        <p style="font-size: 0.95rem; color: var(--neutral-500); line-height: 1.6; font-weight: 300;" data-i18n="pillar_card_desc">
+          Mampu menjembatani kebutuhan bisnis non-teknis menjadi arsitektur aplikasi web yang siap pakai, sekaligus mengoptimasi sistem script tingkat rendah dengan presisi tinggi.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; border: 0.8px solid var(--neutral-400); border-radius: 9999px;">MARKETING BSI</span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; border: 0.8px solid var(--neutral-400); border-radius: 9999px;">WEB DEVELOPMENT</span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; border: 0.8px solid var(--neutral-400); border-radius: 9999px;">ROBLOX LUA AUTOMATION</span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; border: 0.8px solid var(--neutral-400); border-radius: 9999px;">COMMUNITY FOUNDER</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. FULLBLEED STICKY STACKED SERVICE CARDS ================= -->
+  <section id="services" class="cb-block--business-areas">
+    <div class="business-areas__section-title">
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neutral-400); margin-bottom: 0.5rem;">// CORE SOLUTIONS</p>
+        <h2 style="font-family: var(--font-secondary); font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 300; text-transform: uppercase; color: var(--neutral-600);" data-i18n="services_sec_title">Layanan Jasa &amp; Rekam Jejak</h2>
+      </div>
+      <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neutral-400);" data-i18n="services_badge">[ 03 KATEGORI UTAMA ]</span>
+    </div>
+
+    <div class="business-areas__cards">
+      
+      <!-- Card 01: Jasa Pembuatan Website Modern -->
+      <article class="business-areas__card card--one">
+        <div>
+          <span class="business-areas__number">01</span>
+          <h3 class="business-areas__title" data-i18n="card1_title">Jasa Pembuatan Website Modern</h3>
+          <ul class="business-areas__labels">
+            <li class="business-areas__label" data-i18n="card1_l1">Landing Page Bisnis</li>
+            <li class="business-areas__label" data-i18n="card1_l2">Portofolio Interaktif</li>
+            <li class="business-areas__label" data-i18n="card1_l3">Company Profile</li>
+            <li class="business-areas__label" data-i18n="card1_l4">UI/UX Responsif &amp; Cepat</li>
+          </ul>
+          <p class="business-areas__excerpt" data-i18n="card1_desc">
+            Melayani pembuatan website profesional mulai dari landing page promosi, company profile, hingga portofolio personal. Didesain dengan tampilan modern, loading cepat, responsif di semua perangkat (smartphone maupun PC), serta siap membantu meningkatkan kredibilitas bisnis dan kehadiran digital Anda.
+          </p>
+          <a class="cb-button" href="mailto:yogawahyu0308@gmail.com?subject=Tanya%20Jasa%20Pembuatan%20Website">
+            <span class="cb-button__title" data-i18n="card1_btn">konsultasi website</span>
+            <span class="cb-button__arrow">↗</span>
+          </a>
+        </div>
+        <div class="business-areas__image-wrap" style="background: #0C0C10; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 11;">
+          <!-- Ambient subtle royal gradient glow -->
+          <div style="position: absolute; top: -35px; left: -35px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="position: absolute; bottom: -35px; right: -35px; width: 130px; height: 130px; background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+          <!-- Browser Chrome Bar -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.65rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: relative; z-index: 2;">
+            <div style="display: flex; gap: 0.4rem; align-items: center;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);"></span>
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.35);"></span>
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.6);"></span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.35rem; background: rgba(255, 255, 255, 0.04); padding: 0.2rem 0.85rem; border-radius: 9999px; font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-medium); border: 1px solid rgba(255, 255, 255, 0.08);">
+              <span style="color: var(--accent-violet-soft); font-size: 0.6rem;">🔒</span>
+              <span>https://client-domain.com</span>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-caption); font-weight: 500;">100% RESPONSIVE</div>
+          </div>
+
+          <!-- Mini Website Layout Preview -->
+          <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-block: auto; padding-block: 0.4rem; position: relative; z-index: 2;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent-violet-soft); letter-spacing: 0.08em; text-transform: uppercase;">● MODERN WEB ARCHITECTURE</span>
+                <div style="font-family: var(--font-secondary); font-size: 1.1rem; font-weight: 500; color: #FFFFFF; text-transform: uppercase; margin-top: 0.15rem;">HIGH-CONVERTING &amp; CLEAN CODE</div>
+              </div>
+              <div style="padding: 0.25rem 0.65rem; background: #FFFFFF; color: #09090B; border-radius: 9999px; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);">LIVE PREVIEW ↗</div>
+            </div>
+
+            <!-- Mini Feature Cards Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.45rem;">
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.5rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-caption);">PERFORMANCE</div>
+                <div style="font-family: var(--font-secondary); font-size: 0.88rem; color: #FFFFFF; font-weight: 600; margin-top: 0.1rem;">99/100</div>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.5rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-caption);">STACK</div>
+                <div style="font-family: var(--font-secondary); font-size: 0.88rem; color: #FFFFFF; font-weight: 600; margin-top: 0.1rem;">TAILWIND / JS</div>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.5rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-caption);">ANIMATION</div>
+                <div style="font-family: var(--font-secondary); font-size: 0.88rem; color: var(--accent-violet-soft); font-weight: 600; margin-top: 0.1rem;">SMOOTH SCROLL</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Browser Footer -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.55rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-caption); position: relative; z-index: 2;">
+            <span>CROSS-BROWSER COMPATIBLE</span>
+            <span style="color: var(--accent-violet-soft); font-weight: 500;">● SEO OPTIMIZED</span>
+            <span>MOBILE &amp; DESKTOP READY</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 02: Jasa Custom Script Roblox & Lua Automation -->
+      <article class="business-areas__card card--two">
+        <div>
+          <span class="business-areas__number">02</span>
+          <h3 class="business-areas__title" data-i18n="card2_title">Jasa Script Roblox &amp; Custom GUI</h3>
+          <ul class="business-areas__labels">
+            <li class="business-areas__label" data-i18n="card2_l1">Custom GUI</li>
+            <li class="business-areas__label" data-i18n="card2_l2">Custom Lua Game Script</li>
+            <li class="business-areas__label" data-i18n="card2_l3">Auto-Farm / Auto-Steal</li>
+            <li class="business-areas__label" data-i18n="card2_l4">Bypass Memori &amp; Anti-Detect</li>
+          </ul>
+          <p class="business-areas__excerpt" data-i18n="card2_desc">
+            Menerima pembuatan custom script dan antarmuka Custom GUI untuk berbagai judul game Roblox (Violence District, Survive The Apocalypse, Steal An Egg, dsb.). Didesain dengan tampilan menu kustom yang estetik dan interaktif, algoritma vector math presisi, loop heartbeat tanpa FPS-drop, serta proteksi keamanan kode.
+          </p>
+          <a class="cb-button" href="https://discord.gg/UgtRrcjxh3" target="_blank">
+            <span class="cb-button__title" data-i18n="card2_btn">order custom script</span>
+            <span class="cb-button__arrow">↗</span>
+          </a>
+        </div>
+        <div class="business-areas__image-wrap" style="background: #0C0C10; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 11;">
+          
+          <!-- Ambient subtle violet glow behind the GUI -->
+          <div style="position: absolute; top: -40px; right: -40px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="position: absolute; bottom: -30px; left: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+          <!-- GUI Window Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: relative; z-index: 2;">
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-violet); box-shadow: 0 0 6px var(--accent-violet-glow);"></span>
+              <span style="font-family: var(--font-secondary); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #FFFFFF;">NEXHUB // CUSTOM GUI</span>
+            </div>
+            <div style="display: flex; gap: 0.4rem;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);"></span>
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);"></span>
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.4);"></span>
+            </div>
+          </div>
+
+          <!-- GUI Tab Navigation -->
+          <div style="display: flex; gap: 0.4rem; padding-block: 0.65rem 0.5rem; position: relative; z-index: 2;">
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 6px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); color: #FFFFFF; font-weight: 600;">COMBAT</span>
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 6px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); color: var(--text-caption);">EXTRACTION</span>
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 6px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); color: var(--text-caption);">VISUALS</span>
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 6px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); color: var(--text-caption);">SETTINGS</span>
+          </div>
+
+          <!-- GUI Feature Rows -->
+          <div style="display: flex; flex-direction: column; gap: 0.55rem; margin-block: auto; position: relative; z-index: 2;">
+            
+            <!-- Feature 1: Toggle Switch -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0.75rem; border-radius: 8px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+              <div>
+                <div style="font-family: var(--font-primary); font-size: 0.78rem; font-weight: 600; color: #FFFFFF;">Autonomous Extraction Engine</div>
+                <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">Priority target scanner &amp; safe-point delivery</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.55rem; border-radius: 9999px; background: rgba(124, 58, 237, 0.18); border: 1px solid rgba(167, 139, 250, 0.4); color: #FFFFFF; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;">
+                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent-violet); box-shadow: 0 0 6px var(--accent-violet-glow);"></span>
+                ACTIVE
+              </div>
+            </div>
+
+            <!-- Feature 2: Slider Control -->
+            <div style="padding: 0.55rem 0.75rem; border-radius: 8px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+              <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.68rem; margin-bottom: 0.35rem;">
+                <span style="color: #FFFFFF;">Scan Radius // Vector3</span>
+                <span style="color: var(--accent-violet-soft); font-weight: 600;">250 Studs</span>
+              </div>
+              <div style="width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 9999px; position: relative;">
+                <div style="width: 70%; height: 100%; background: linear-gradient(90deg, #7C3AED, #A78BFA); border-radius: 9999px;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- GUI Bottom Telemetry Footer -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.6rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-caption); position: relative; z-index: 2;">
+            <span>RENDER: 60 FPS</span>
+            <span style="color: var(--accent-violet-soft); font-weight: 500;">● ZERO LATENCY</span>
+            <span style="color: #FFFFFF;">BYPASS: SHIELDED</span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Card 03: Rekam Jejak Profesional & Melamar Kerja -->
+      <article class="business-areas__card card--three">
+        <div>
+          <span class="business-areas__number">03</span>
+          <h3 class="business-areas__title" data-i18n="card3_title">Pengalaman Kerja &amp; Karir Profesional</h3>
+          <ul class="business-areas__labels">
+            <li class="business-areas__label" data-i18n="card3_l1">Ex-Marketing BSI (1 Tahun)</li>
+            <li class="business-areas__label" data-i18n="card3_l2">Komunikasi &amp; Negosiasi</li>
+            <li class="business-areas__label" data-i18n="card3_l3">Pencapaian Target Finansial</li>
+            <li class="business-areas__label" data-i18n="card3_l4">Founder Komunitas NexHub</li>
+          </ul>
+          <p class="business-areas__excerpt" data-i18n="card3_desc">
+            Memiliki pengalaman nyata 1 tahun sebagai Marketing di Bank Syariah Indonesia (BSI), terbiasa membangun hubungan nasabah, negosiasi, dan bekerja di bawah standar kepatuhan perbankan. Siap bergabung dan memberikan kontribusi nyata di perusahaan Anda.
+          </p>
+          <a class="cb-button" href="mailto:yogawahyu0308@gmail.com?subject=Tawaran%20Pekerjaan%20/%20Undangan%20Interview">
+            <span class="cb-button__title" data-i18n="card3_btn">rekrut / undang interview</span>
+            <span class="cb-button__arrow">↗</span>
+          </a>
+        </div>
+        <div class="business-areas__image-wrap" style="background: #0C0C10; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 11;">
+          <!-- Ambient subtle violet glow -->
+          <div style="position: absolute; top: -30px; right: -30px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(124, 58, 237, 0.14) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="position: absolute; bottom: -30px; left: -30px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+          <!-- Top Badge Bar -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.65rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: relative; z-index: 2;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.64rem; color: var(--accent-violet-soft); letter-spacing: 0.1em; text-transform: uppercase;">[ OFFICIAL CREDENTIAL ]</span>
+            </div>
+            <div style="padding: 0.2rem 0.65rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); font-family: var(--font-mono); font-size: 0.62rem; color: #FFFFFF; font-weight: 600;">
+              ✓ VERIFIED TRACK RECORD
+            </div>
+          </div>
+
+          <!-- BSI Card Center Details -->
+          <div style="display: flex; align-items: center; gap: 1.25rem; margin-block: auto; padding-block: 0.5rem; position: relative; z-index: 2;">
+            <div style="background: rgba(255, 255, 255, 0.04); padding: 0.65rem 1.15rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+              <img src="bsi_logo_white.svg" alt="Bank Syariah Indonesia" style="height: 38px; width: auto; object-fit: contain;" />
+            </div>
+            <div>
+              <div style="font-family: var(--font-secondary); font-size: 1.15rem; color: #FFFFFF; text-transform: uppercase; line-height: 1.2;">YOGA WAHYU R. P.</div>
+              <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-violet-soft); margin-top: 0.25rem;">Ex-Marketing • Bank Syariah Indonesia</div>
+              <div style="font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-muted); margin-top: 0.2rem;">TENURE: 1 YEAR // HIGH DISCIPLINE &amp; NEGOTIATION</div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.55rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-caption); position: relative; z-index: 2;">
+            <span>STATUS: READY TO HIRE</span>
+            <span style="color: var(--accent-violet-soft); font-weight: 500;">★ STRONG WORK ETHIC</span>
+            <span style="color: #FFFFFF;">PROFESSIONAL INTEGRITY</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. POST GALLERY (VERTICAL DASHED BORDER CARDS) ================= -->
+  <section id="systems" class="cb-block--post-gallery">
+    <div class="post-gallery__heading">
+      <span data-i18n="systems_title">Modul Game &amp; Portofolio Sistem</span>
+      <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neutral-400);" data-i18n="systems_badge">[ REPOSITORI AKTIF // NEXHUB ]</span>
+    </div>
+
+    <div class="post-gallery__grid">
+      
+      <!-- Item 1 -->
+      <div class="post-gallery__item">
+        <div class="post-gallery__item-header">
+          <span>01 / HORROR</span>
+          <span>VIOLENCE DISTRICT</span>
+        </div>
+        <div class="post-gallery__thumb">
+          <img src="violence_district.png" alt="Violence District Roblox" />
+        </div>
+        <div class="post-gallery__footer">
+          <h4>Violence District Engine</h4>
+          <p data-i18n="game1_desc">Otomatisasi perbaikan generator, radar killer proximity, dan navigasi pallet aman dengan zero-detection.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="post-gallery__item">
+        <div class="post-gallery__item-header">
+          <span>02 / SURVIVAL</span>
+          <span>SURVIVE THE APOCALYPSE</span>
+        </div>
+        <div class="post-gallery__thumb">
+          <img src="survive_apocalypse.png" alt="Survive The Apocalypse Roblox" />
+        </div>
+        <div class="post-gallery__footer">
+          <h4>Survive The Apocalypse Hub</h4>
+          <p data-i18n="game2_desc">Auto-scavenge resource scanner, wave combat defense, base fortification, dan optimasi emerald farming.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="post-gallery__item">
+        <div class="post-gallery__item-header">
+          <span>03 / EXTRACTION</span>
+          <span>STEAL AN EGG</span>
+        </div>
+        <div class="post-gallery__thumb">
+          <img src="steal_an_egg.png" alt="Steal An Egg Roblox" />
+        </div>
+        <div class="post-gallery__footer">
+          <h4>Steal An Egg Auto Engine</h4>
+          <p data-i18n="game3_desc">Autonomous proximity scanner, rarity priority sorting, speed trainer, dan safe-point fallback delivery.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. CONTACT SECTION ================= -->
+  <section id="contact" class="cb-block--contact">
+    <div class="contact__inner">
+      <!-- Left Column -->
+      <div class="contact__left">
+        <h2 class="contact__heading" data-i18n="contact_heading">
+          ADA KEBUTUHAN JASA ATAU TAWARAN KERJA? <br />
+          MARI KITA BICARAKAN.
+        </h2>
+        <p class="contact__text" data-i18n="contact_text">
+          Terbuka untuk pesanan pembuatan website, custom script Roblox, kolaborasi komunitas, maupun peluang kerja profesional di perusahaan Anda.
+        </p>
+
+        <ul class="contact__details">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--neutral-400); margin-bottom: 0.25rem;" data-i18n="contact_channels">
+            // KANAL HUBUNGAN RESMI:
+          </span>
+          <li>
+            <a href="mailto:yogawahyu0308@gmail.com" class="contact__detail">
+              <span>EMAIL: yogawahyu0308@gmail.com</span>
+              <span style="margin-left: auto;">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://discord.gg/UgtRrcjxh3" target="_blank" class="contact__detail">
+              <span>DISCORD: NEXHUB COMMUNITY</span>
+              <span style="margin-left: auto;">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@nexhub.community?_r=1&_t=ZS-9ANbUpUairi" target="_blank" class="contact__detail">
+              <span>TIKTOK: @nexhub.community</span>
+              <span style="margin-left: auto;">↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Dashed Form -->
+      <div class="contact__form">
+        <div class="contact__form-field">
+          <label for="name" data-i18n="form_label_name">NAMA LENGKAP / INSTANSI</label>
+          <input type="text" id="name" placeholder="Tuliskan nama atau nama perusahaan Anda..." data-i18n-placeholder="form_ph_name" />
+        </div>
+
+        <div class="contact__form-field">
+          <label for="email" data-i18n="form_label_email">EMAIL / WHATSAPP / DISCORD</label>
+          <input type="text" id="email" placeholder="kontak@perusahaan.com / 08xxxxxxxxxx" data-i18n-placeholder="form_ph_email" />
+        </div>
+
+        <div class="contact__form-field">
+          <label for="topic" data-i18n="form_label_topic">KEPERLUAN / TOPIK</label>
+          <input type="text" id="topic" placeholder="Misal: Jasa Pembuatan Website / Jasa Script Roblox / Tawaran Kerja" data-i18n-placeholder="form_ph_topic" />
+        </div>
+
+        <div class="contact__form-field">
+          <label for="message" data-i18n="form_label_message">DETAIL KEBUTUHAN ATAU PESAN</label>
+          <textarea id="message" placeholder="Jelaskan spesifikasi proyek atau detail posisi pekerjaan yang ditawarkan..." data-i18n-placeholder="form_ph_message"></textarea>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <a class="cb-button" href="mailto:yogawahyu0308@gmail.com" id="submitBtn">
+            <span class="cb-button__title" data-i18n="form_btn_submit">kirim pesan via email</span>
+            <span class="cb-button__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 8. FOOTER ================= -->
+  <footer class="cb-site-footer">
+    <div data-i18n="footer_copy">&copy; 2026 NEX / YW. ALL RIGHTS RESERVED.</div>
+    <a href="#" style="color: var(--accent-violet-soft); font-weight: 500;" data-i18n="footer_top">BACK TO TOP ↑</a>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // 1. Lenis Smooth Scroll
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Header State Change on Scroll (.is-scrolled)
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    });
+
+    // 3. Contact Form Handler to mailto
+    document.getElementById('submitBtn').addEventListener('click', (e) => {
+      const name = document.getElementById('name').value;
+      const topic = document.getElementById('topic').value;
+      const message = document.getElementById('message').value;
+      const subject = encodeURIComponent(`[Project Inquiry] ${topic || 'Collab'} - ${name || 'Visitor'}`);
+      const body = encodeURIComponent(`Halo Nex / YW,\n\n${message}\n\nDari: ${name}`);
+      window.location.href = `mailto:yogawahyu0308@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // 4. Bilingual Translation Engine (ID / EN)
+    const translations = {
+      id: {
+        nav_about: "01 TENTANG",
+        nav_services: "02 LAYANAN JASA",
+        nav_systems: "03 PRODUK & KARYA",
+        nav_exp: "04 PENGALAMAN",
+        nav_contact: "05 KONTAK & REKRUT",
+        hero_intro: "Halo! Saya <strong>Yoga Wahyu R. P. (Nex / YW)</strong> — Memadukan kedisiplinan kerja profesional dari dunia perbankan (Ex-Marketing Bank Syariah Indonesia) dengan kapabilitas Software & Lua Development. Melayani jasa pembuatan website modern, pembuatan custom script Roblox, dan siap berkontribusi secara profesional di dunia kerja.",
+        hero_btn_services: "LIHAT JASA & PORTOFOLIO",
+        hero_btn_contact: "HUBUNGI / REKRUT SAYA",
+        statement_text: "SAYA MENGGABUNGKAN KEDISIPLINAN DARI DUNIA <strong>PERBANKAN SYARIAH (BSI)</strong> DENGAN KEAHLIAN TEKNIS <strong>WEB DEVELOPMENT</strong> DAN <strong>LUA SCRIPTING</strong>. SEBAGAI FOUNDER DARI <strong>NEXHUB COMMUNITY</strong>, SAYA MEMBUKA LAYANAN <strong>JASA PEMBUATAN WEBSITE</strong>, PEMBUATAN <strong>CUSTOM SCRIPT ROBLOX</strong>, SERTA TERBUKA UNTUK <strong>PELUANG KARIER PROFESIONAL</strong> DENGAN ETOS KERJA TERUJI.",
+        kpi_bsi: "Pengalaman Marketing di BSI",
+        kpi_roblox: "Script & Modul Roblox Dirilis",
+        kpi_users: "Total Eksekusi & Pengguna",
+        kpi_commit: "Komitmen Kualitas & Klien",
+        pillar_sub: "DISIPLIN KORPORAT & KEAHLIAN TEKNIS",
+        pillar_title: "TIGA PILAR UTAMA. <br> SATU INTEGRITAS.",
+        pillar_p1: "Kombinasi unik antara pemahaman bisnis, etos kerja perbankan, dan penguasaan kode tingkat lanjut:",
+        pillar_p2: "Dari pengalaman di <strong>Bank Syariah Indonesia (BSI)</strong>, saya membawa disiplin kerja ketat, komunikasi profesional dengan nasabah/klien, serta orientasi target yang terukur.",
+        pillar_p3: "Di bidang teknologi, saya memimpin <strong>NexHub Community</strong>, menyediakan <strong>Jasa Pembuatan Website</strong> modern, serta <strong>Jasa Pembuatan Script Roblox</strong> dengan performa stabil dan zero-latency.",
+        pillar_btn_discuss: "diskusikan proyek / rekrut",
+        pillar_btn_join: "join komunitas nexhub",
+        pillar_card_desc: "Mampu menjembatani kebutuhan bisnis non-teknis menjadi arsitektur aplikasi web yang siap pakai, sekaligus mengoptimasi sistem script tingkat rendah dengan presisi tinggi.",
+        services_sec_title: "Layanan Jasa & Rekam Jejak",
+        services_badge: "[ 03 KATEGORI UTAMA ]",
+        card1_title: "Jasa Pembuatan Website Modern",
+        card1_l1: "Landing Page Bisnis",
+        card1_l2: "Portofolio Interaktif",
+        card1_l3: "Company Profile",
+        card1_l4: "UI/UX Responsif & Cepat",
+        card1_desc: "Melayani pembuatan website profesional mulai dari landing page promosi, company profile, hingga portofolio personal. Didesain dengan tampilan modern, loading cepat, responsif di semua perangkat (smartphone maupun PC), serta siap membantu meningkatkan kredibilitas bisnis dan kehadiran digital Anda.",
+        card1_btn: "konsultasi website",
+        card2_title: "Jasa Script Roblox & Custom GUI",
+        card2_l1: "Custom GUI",
+        card2_l2: "Custom Lua Game Script",
+        card2_l3: "Auto-Farm / Auto-Steal",
+        card2_l4: "Bypass Memori & Anti-Detect",
+        card2_desc: "Menerima pembuatan custom script dan antarmuka Custom GUI untuk berbagai judul game Roblox (Violence District, Survive The Apocalypse, Steal An Egg, dsb.). Didesain dengan tampilan menu kustom yang estetik dan interaktif, algoritma vector math presisi, loop heartbeat tanpa FPS-drop, serta proteksi keamanan kode.",
+        card2_btn: "order custom script",
+        card3_title: "Pengalaman Kerja & Karir Profesional",
+        card3_l1: "Ex-Marketing BSI (1 Tahun)",
+        card3_l2: "Komunikasi & Negosiasi",
+        card3_l3: "Pencapaian Target Finansial",
+        card3_l4: "Founder Komunitas NexHub",
+        card3_desc: "Memiliki pengalaman nyata 1 tahun sebagai Marketing di Bank Syariah Indonesia (BSI), terbiasa membangun hubungan nasabah, negosiasi, dan bekerja di bawah standar kepatuhan perbankan. Siap bergabung dan memberikan kontribusi nyata di perusahaan Anda.",
+        card3_btn: "rekrut / undang interview",
+        systems_title: "Modul Game & Portofolio Sistem",
+        systems_badge: "[ REPOSITORI AKTIF // NEXHUB ]",
+        game1_desc: "Otomatisasi perbaikan generator, radar killer proximity, dan navigasi pallet aman dengan zero-detection.",
+        game2_desc: "Auto-scavenge resource scanner, wave combat defense, base fortification, dan optimasi emerald farming.",
+        game3_desc: "Autonomous proximity scanner, rarity priority sorting, speed trainer, dan safe-point fallback delivery.",
+        contact_heading: "ADA KEBUTUHAN JASA ATAU TAWARAN KERJA? <br /> MARI KITA BICARAKAN.",
+        contact_text: "Terbuka untuk pesanan pembuatan website, custom script Roblox, kolaborasi komunitas, maupun peluang kerja profesional di perusahaan Anda.",
+        contact_channels: "// KANAL HUBUNGAN RESMI:",
+        form_label_name: "NAMA LENGKAP / INSTANSI",
+        form_ph_name: "Tuliskan nama atau nama perusahaan Anda...",
+        form_label_email: "EMAIL / WHATSAPP / DISCORD",
+        form_ph_email: "kontak@perusahaan.com / 08xxxxxxxxxx",
+        form_label_topic: "KEPERLUAN / TOPIK",
+        form_ph_topic: "Misal: Jasa Pembuatan Website / Jasa Script Roblox / Tawaran Kerja",
+        form_label_message: "DETAIL KEBUTUHAN ATAU PESAN",
+        form_ph_message: "Jelaskan spesifikasi proyek atau detail posisi pekerjaan yang ditawarkan...",
+        form_btn_submit: "kirim pesan via email",
+        footer_copy: "&copy; 2026 NEX / YW. ALL RIGHTS RESERVED.",
+        footer_top: "BACK TO TOP ↑"
+      },
+      en: {
+        nav_about: "01 ABOUT",
+        nav_services: "02 SERVICES",
+        nav_systems: "03 SYSTEMS & REPO",
+        nav_exp: "04 EXPERIENCE",
+        nav_contact: "05 CONTACT & HIRE",
+        hero_intro: "Hello! I am <strong>Yoga Wahyu R. P. (Nex / YW)</strong> — Combining professional discipline from banking (Ex-Marketing at Bank Syariah Indonesia) with advanced Software & Lua Development expertise. Offering modern web development, custom Roblox scripts, and ready to contribute to your company.",
+        hero_btn_services: "VIEW SERVICES & PORTFOLIO",
+        hero_btn_contact: "GET IN TOUCH / HIRE ME",
+        statement_text: "I BRING TOGETHER DISCIPLINE FROM <strong>ISLAMIC BANKING (BSI)</strong> WITH TECHNICAL PROFICIENCY IN <strong>WEB DEVELOPMENT</strong> AND <strong>LUA SCRIPTING</strong>. AS FOUNDER OF <strong>NEXHUB COMMUNITY</strong>, I OFFER <strong>MODERN WEB SERVICES</strong>, <strong>CUSTOM ROBLOX AUTOMATION</strong>, AND AM OPEN FOR <strong>PROFESSIONAL CAREER OPPORTUNITIES</strong> WITH A PROVEN WORK ETHIC.",
+        kpi_bsi: "Marketing Experience at BSI",
+        kpi_roblox: "Roblox Scripts & Modules Shipped",
+        kpi_users: "Total Executions & Users",
+        kpi_commit: "Quality & Client Commitment",
+        pillar_sub: "CORPORATE DISCIPLINE & TECHNICAL PROFICIENCY",
+        pillar_title: "THREE CORE PILLARS. <br> ONE UNIFIED INTEGRITY.",
+        pillar_p1: "A unique synergy between business insight, banking work ethics, and advanced software engineering:",
+        pillar_p2: "From my tenure at <strong>Bank Syariah Indonesia (BSI)</strong>, I bring rigorous workplace discipline, professional client negotiation, and measurable target achievement.",
+        pillar_p3: "In technology, I lead the <strong>NexHub Community</strong>, providing modern <strong>Web Development</strong>, as well as high-performance, zero-latency <strong>Roblox Lua Automation</strong>.",
+        pillar_btn_discuss: "discuss project / hire me",
+        pillar_btn_join: "join nexhub community",
+        pillar_card_desc: "Bridging non-technical business requirements into turn-key web architectures, while engineering low-level game scripts with high precision.",
+        services_sec_title: "Services & Proven Track Record",
+        services_badge: "[ 03 CORE CATEGORIES ]",
+        card1_title: "Modern Web Development Services",
+        card1_l1: "High-Converting Landing Pages",
+        card1_l2: "Interactive Portfolios",
+        card1_l3: "Corporate Company Profiles",
+        card1_l4: "Ultra-Fast & Responsive UI/UX",
+        card1_desc: "Crafting bespoke, high-performance websites ranging from marketing landing pages and company profiles to personal portfolios. Built with clean architecture, swift loading speeds, full device responsiveness, and elevated brand credibility.",
+        card1_btn: "consult web project",
+        card2_title: "Roblox Scripting & Custom GUI",
+        card2_l1: "Bespoke Custom GUI",
+        card2_l2: "Custom Lua Game Engine",
+        card2_l3: "Autonomous Automation Engines",
+        card2_l4: "Memory Safety & Stealth Execution",
+        card2_desc: "Providing custom Lua scripts and bespoke GUI systems across premier Roblox titles (Violence District, Survive The Apocalypse, Steal An Egg, etc.). Engineered with aesthetic interactive menus, vector math accuracy, smooth heartbeat loops without FPS drops, and code obfuscation.",
+        card2_btn: "order custom script",
+        card3_title: "Professional Career & Experience",
+        card3_l1: "Ex-Marketing BSI (1 Year)",
+        card3_l2: "Client Relations & Negotiation",
+        card3_l3: "Financial Target Milestones",
+        card3_l4: "Founder of NexHub Community",
+        card3_desc: "1 year of hands-on experience in Islamic Banking (BSI) marketing, experienced in client acquisition, negotiation, and high regulatory standards. Ready to join and make an immediate impact at your organization.",
+        card3_btn: "hire / schedule interview",
+        systems_title: "Game Modules & Systems Portfolio",
+        systems_badge: "[ ACTIVE REPOSITORY // NEXHUB ]",
+        game1_desc: "Automated generator repair, killer proximity radar, and safe pallet navigation with zero detection.",
+        game2_desc: "Auto-scavenge resource scanner, wave defense combat, base fortification, and optimized emerald farming.",
+        game3_desc: "Autonomous proximity scanner, rarity priority sorting, speed trainer, and safe-point fallback delivery.",
+        contact_heading: "LOOKING FOR DEV SERVICES OR HIRING TALENT? <br /> LET'S CONNECT.",
+        contact_text: "Open for website commissions, custom Roblox scripts, community partnerships, or professional hiring opportunities within your organization.",
+        contact_channels: "// OFFICIAL CONTACT CHANNELS:",
+        form_label_name: "FULL NAME / ORGANIZATION",
+        form_ph_name: "Enter your name or organization name...",
+        form_label_email: "EMAIL / WHATSAPP / DISCORD",
+        form_ph_email: "contact@company.com / handle",
+        form_label_topic: "SUBJECT / INQUIRY TOPIC",
+        form_ph_topic: "e.g. Website Project / Roblox Script Commission / Career Offer",
+        form_label_message: "PROJECT DETAILS OR MESSAGE",
+        form_ph_message: "Describe your project requirements or details of the position offered...",
+        form_btn_submit: "send inquiry via email",
+        footer_copy: "&copy; 2026 NEX / YW. ALL RIGHTS RESERVED.",
+        footer_top: "BACK TO TOP ↑"
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      
+      // Update text elements
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Update input / textarea placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
+
+      // Toggle active class on switcher buttons
+      const btnId = document.getElementById('lang-id');
+      const btnEn = document.getElementById('lang-en');
+      if (btnId && btnEn) {
+        if (lang === 'en') {
+          btnEn.classList.add('is-active');
+          btnId.classList.remove('is-active');
+        } else {
+          btnId.classList.add('is-active');
+          btnEn.classList.remove('is-active');
+        }
+      }
+
+      // Update html lang attribute & store preference
+      document.documentElement.lang = lang;
+      try {
+        localStorage.setItem('nex_lang', lang);
+      } catch (e) {}
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('nex_lang') || 'id';
+      if (savedLang === 'en') {
+        setLanguage('en');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio Moderator Developer Modern - Nex" />
+  <meta name="keywords" content="moderator developer, web design, portfolio, Nex" />
+  <meta name="author" content="Nex" />
+  <title>Nex</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Social Media Assets (Open Graph) -->
+  <meta property="og:title" content="Nex | Moderator Developer" />
+  <meta property="og:description" content="Portfolio Personal Profile - Nex" />
+  <meta property="og:image" content="profile.webp" />
+  <meta property="og:url" content="https://your-github-username.github.io/portfolio/" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="loading" id="loading">
+    <div class="loader"></div>
+  </div>
+  <canvas id="hero-canvas"></canvas>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="ph ph-arrow-up"></i>
+  </button>
+
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        Nex<span class="gradient-text">.Dev</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Beranda</a></li>
+          <li><a href="#about" class="nav-link">Tentang</a></li>
+          <li><a href="#contact" class="nav-link">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h1>
+          Welcome To<br /><span class="gradient-text">Personal Profile</span>
+        </h1>
+        <div class="typewriter" id="typewriter"></div>
+        <p class="hero-description">
+          Saya adalah seorang Developer yang berdedikasi dengan pengalaman dalam mengelola komunitas online dan
+          mengembangkan solusi kreatif untuk meningkatkan pengalaman pengguna. Dengan latar belakang yang kuat dalam
+          moderasi dan pengembangan, saya berkomitmen untuk menciptakan lingkungan digital yang aman, inklusif, dan
+          menyenangkan bagi semua anggota komunitas.
+        </p>
+
+        <div class="btn-group">
+          <a href="#about" class="btn btn-primary">
+            Jelajahi <i class="ph ph-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="ph ph-envelope-simple"></i>
+            Hubungi Saya
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img-wrapper reveal">
+            <img src="profile.webp" alt="Nex - Frontend Developer" loading="lazy" />
+          </div>
+          <div class="about-text reveal">
+            <h2>About me</h2>
+            <p>
+              Founder NexHub Community, Ex Marketing Bank Syariah Indonesia
+              dengan pengalaman 1 Tahun di dunia Marketing dan 6 Bulan di bidang Developer.
+            </p>
+
+            <div class="skills-list">
+              <div class="skill-icon" title="Bank Syariah Indonesia">
+                <img src="bsi_logo.png" alt="Bank Syariah Indonesia" class="bsi-logo" />
+                <span class="skill-name">BSI</span>
+              </div>
+              <div class="skill-icon" title="Roblox">
+                <img src="roblox_logo.png" alt="Roblox" class="roblox-logo" />
+                <span class="skill-name">Roblox</span>
+              </div>
+              <div class="skill-icon" title="Lua">
+                <svg class="lua-icon" viewBox="0 0 947 947">
+                  <g>
+                    <path fill="#000080"
+                      d="M835.5,473.6c0-199.8-162.2-362-362-362s-362,162.2-362,362c0,199.8,162.2,362,362,362S835.5,673.4,835.5,473.6" />
+                    <path fill="#FFFFFF"
+                      d="M729.5,323.6c0-58.5-47.5-106-106-106s-106,47.5-106,106c0,58.5,47.5,106,106,106S729.5,382.1,729.5,323.6" />
+                    <path fill="#000080"
+                      d="M941.5,111.5c0-58.5-47.5-106-106-106s-106,47.5-106,106c0,58.5,47.5,106,106,106S941.5,170.1,941.5,111.5" />
+                    <g>
+                      <path fill="#FFFFFF" d="M258.1,627.8h117.3v26.7H227.8V417h30.3V627.8z" />
+                      <path fill="#FFFFFF"
+                        d="M515.5,654.5v-23.8c-16,22.5-31.9,31.3-57,31.3c-33.2,0-54.4-18.2-54.4-46.6V483.8h27v120.9c0,20.5,13.7,33.6,35.2,33.6c28.3,0,46.6-22.8,46.6-57.7v-96.8h27v170.7H515.5z" />
+                      <path fill="#FFFFFF"
+                        d="M738.4,659.1c-8.8,2.3-13,2.9-18.6,2.9c-17.6,0-26.1-7.8-28-25.1c-19.2,17.6-36.5,25.1-58,25.1c-34.5,0-56-19.5-56-50.5c0-22.2,10.1-37.5,30-45.6c10.4-4.2,16.3-5.5,54.7-10.4c21.5-2.6,28.3-7.5,28.3-18.9v-7.2c0-16.3-13.7-25.4-38.1-25.4c-25.4,0-37.8,9.4-40.1,30.3h-27.4c0.7-16.9,3.9-26.7,11.7-35.5c11.4-12.7,31.9-19.9,56.7-19.9c42,0,64.2,16.3,64.2,46.6v100.4c0,8.5,5.2,13.4,14.7,13.4c1.6,0,2.9,0,5.9-0.7V659.1z M690.8,570.1c-9.1,4.2-15,5.5-43.7,9.4c-29,4.2-41.1,13.4-41.1,31.3c0,17.3,12.4,27.4,33.6,27.4c16,0,29.3-5.2,40.4-15.3c8.1-7.5,10.8-13,10.8-22.2V570.1z" />
+                    </g>
+                    <path fill="none" stroke="#808080" stroke-width="10.8612" stroke-miterlimit="10"
+                      stroke-dasharray="40.8475"
+                      d="M890.6,261c33.5,65.8,51,138.6,51,212.5c0,258.4-209.7,468.1-468.1,468.1S5.4,731.9,5.4,473.5C5.4,215.1,215.1,5.4,473.5,5.4c83.1,0,164.6,22.1,236.2,63.9" />
+                  </g>
+                </svg>
+                <span class="skill-name">Lua</span>
+              </div>
+              <div class="skill-icon" title="GitHub">
+                <i class="devicon-github-original"></i>
+                <span class="skill-name">GitHub</span>
+              </div>
+              <div class="skill-icon" title="VSCode">
+                <i class="devicon-vscode-plain colored"></i>
+                <span class="skill-name">VSCode</span>
+              </div>
+              <div class="skill-icon" title="NexHub Community">
+                <img src="nexhub_logo.png" alt="NexHub Community" class="nexhub-logo" />
+                <span class="skill-name">NexHub Community</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+      <div class="container">
+        <div class="contact-info reveal">
+          <h2>Contact</h2>
+          <p>Punya project atau ada yang mau di bahas? Hubungi Saya di bawah</p>
+
+          <div class="contact-links">
+            <div class="contact-item reveal">
+              <i class="ph ph-envelope contact-icon"></i>
+              <h3>Email</h3>
+              <a href="mailto:yogawahyu0308@gmail.com" class="contact-link">
+                yogawahyu0308@gmail.com
+              </a>
+              <span class="contact-note">Balasan dalam 24 jam kerja</span>
+            </div>
+            <div class="contact-item reveal">
+              <i class="ph ph-discord-logo contact-icon"></i>
+              <h3>Discord</h3>
+              <a href="https://discord.gg/UgtRrcjxh3" target="_blank" class="contact-link"
+                rel="noopener noreferrer">
+                NexHub Community
+              </a>
+              <span class="contact-note">Hubungi Saya di Discord</span>
+            </div>
+            <div class="contact-item reveal">
+              <i class="ph ph-tiktok-logo contact-icon"></i>
+              <h3>TikTok</h3>
+              <a href="https://www.tiktok.com/@nexhub.community?_r=1&_t=ZS-9ANbUpUairi" target="_blank" class="contact-link"
+                rel="noopener noreferrer">
+                @nexhub.community
+              </a>
+              <span class="contact-note">Menyediakan layanan Script Roblox Universal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-social">
+        <a href="https://discord.gg/UgtRrcjxh3" target="_blank" title="Discord" rel="noopener noreferrer">
+          <i class="ph ph-discord-logo"></i>
+        </a>
+        <a href="https://www.tiktok.com/@nexhub.community?_r=1&_t=ZS-9ANbUpUairi" target="_blank" title="TikTok"
+          rel="noopener noreferrer">
+          <i class="ph ph-tiktok-logo"></i>
+        </a>
+        <a href="mailto:yogawahyu0308@gmail.com" title="Email">
+          <i class="ph ph-envelope"></i>
+        </a>
+        <a href="#contact" title="Kontak">
+          <i class="ph ph-chat-circle-text"></i>
+        </a>
+      </div>
+      <p class="footer-copyright">
+        &copy; 2026 Nex. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="particles.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,636 @@
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error404</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+      :root {
+        --bg-body: #0a0a0a;
+        --bg-card: #121212;
+        --bg-card-hover: #1a1a1a;
+        --text-main: #ffffff;
+        --text-muted: #a1a1aa;
+        --primary: #6366f1;
+        --secondary: #ec4899;
+        --accent-gradient: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+        --glass-bg: rgba(18, 18, 18, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --radius: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.7;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+
+      ::selection {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-body);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          to bottom,
+          var(--primary),
+          var(--secondary)
+        );
+        border-radius: 5px;
+        border: 2px solid var(--bg-body);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          to bottom,
+          var(--secondary),
+          var(--primary)
+        );
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .gradient-text {
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+      }
+
+      #error-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      /* Header */
+      header {
+        padding: 30px 0;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--glass-border);
+        position: relative;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+
+      .error-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .error-content {
+        text-align: center;
+        max-width: 600px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .error-icon {
+        font-size: 6rem;
+        color: var(--primary);
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .error-icon::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: var(--accent-gradient);
+        border-radius: 50%;
+        filter: blur(20px);
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        margin-bottom: 15px;
+        letter-spacing: -1.5px;
+      }
+
+      .error-code {
+        display: inline-block;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        font-family: "Space Mono", monospace;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .error-description {
+        color: var(--text-muted);
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 16px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        outline: none;
+        position: relative;
+        z-index: 10;
+      }
+
+      .btn-primary {
+        background: var(--accent-gradient);
+        color: white;
+        box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.5);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--glass-border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-outline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .btn-outline:hover::before {
+        left: 100%;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--text-main);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--glass-border);
+        padding: 40px 0 30px;
+        text-align: center;
+        color: var(--text-muted);
+        position: relative;
+        overflow: hidden;
+        z-index: 100;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(15px);
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1200px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--primary),
+          var(--secondary),
+          transparent
+        );
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 25px;
+      }
+
+      .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: 50%;
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+      }
+
+      .footer-copyright {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        opacity: 0.9;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.1s;
+        opacity: 0;
+      }
+
+      .delay-2 {
+        animation-delay: 0.2s;
+        opacity: 0;
+      }
+
+      .delay-3 {
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+
+      @media (max-width: 768px) {
+        .error-icon {
+          font-size: 4.5rem;
+        }
+
+        .error-icon::after {
+          width: 80px;
+          height: 80px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .btn-group {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
+        }
+
+        .footer-social {
+          gap: 15px;
+        }
+
+        .footer-social a {
+          width: 45px;
+          height: 45px;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .error-icon {
+          font-size: 4rem;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .container {
+          padding: 0 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="error-canvas"></canvas>
+
+    <header>
+      <div class="container">
+        <a href="/" class="logo">
+          Louissxe<span class="gradient-text">.Dev</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="error-container">
+      <div class="container">
+        <div class="error-content">
+          <div class="error-icon animate-fade-in">
+            <i class="ph ph-warning-circle"></i>
+          </div>
+
+          <h1 class="animate-fade-in delay-1">
+            Oops! <span class="gradient-text">Something Wrong</span>
+          </h1>
+
+          <p class="error-description animate-fade-in delay-2">
+            The page you're looking for seems to have disappeared into the
+            digital void. Maybe it never existed, or maybe it's just hiding.
+          </p>
+
+          <div class="btn-group animate-fade-in delay-3">
+            <a href="/" class="btn btn-primary">
+              <i class="ph ph-house-simple"></i>
+              Back to Home
+            </a>
+
+            <a href="javascript:history.back()" class="btn btn-outline">
+              <i class="ph ph-arrow-left"></i>
+              Go Back
+            </a>
+
+            <button onclick="window.location.reload()" class="btn btn-outline">
+              <i class="ph ph-arrow-clockwise"></i>
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("error-canvas");
+        const ctx = canvas.getContext("2d");
+        let particlesArray = [];
+        let animationId = null;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let mouse = {
+          x: null,
+          y: null,
+          radius: (canvas.height / 80) * (canvas.width / 80),
+        };
+
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = event.x;
+          mouse.y = event.y;
+        });
+
+        window.addEventListener("mouseout", () => {
+          mouse.x = null;
+          mouse.y = null;
+        });
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
+            this.color = "#6366f1";
+            this.alpha = Math.random() * 0.5 + 0.2;
+          }
+
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+            if (this.y > canvas.height || this.y < 0)
+              this.speedY = -this.speedY;
+
+            if (mouse.x && mouse.y) {
+              const dx = mouse.x - this.x;
+              const dy = mouse.y - this.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < mouse.radius + this.size) {
+                if (mouse.x < this.x && this.x < canvas.width - this.size * 10)
+                  this.x += 2;
+                if (mouse.x > this.x && this.x > this.size * 10) this.x -= 2;
+                if (mouse.y < this.y && this.y < canvas.height - this.size * 10)
+                  this.y += 2;
+                if (mouse.y > this.y && this.y > this.size * 10) this.y -= 2;
+              }
+            }
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(99, 102, 241, ${this.alpha})`;
+            ctx.fill();
+          }
+        }
+
+        function init() {
+          particlesArray = [];
+          const numberOfParticles = (canvas.height * canvas.width) / 3000;
+          for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+          }
+        }
+
+        function connect() {
+          for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+              const dx = particlesArray[a].x - particlesArray[b].x;
+              const dy = particlesArray[a].y - particlesArray[b].y;
+              const distance = dx * dx + dy * dy;
+
+              if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                const opacity = 1 - distance / 20000;
+                ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.3})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+          }
+
+          connect();
+          animationId = requestAnimationFrame(animate);
+        }
+
+        function handleResize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          mouse.radius = (canvas.height / 80) * (canvas.height / 80);
+          init();
+        }
+
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(handleResize, 250);
+        });
+
+        init();
+        animate();
+
+        const elements = document.querySelectorAll(".animate-fade-in");
+        elements.forEach((element) => {
+          element.style.animationPlayState = "running";
+        });
+
+        const buttons = document.querySelectorAll(".btn");
+        buttons.forEach((button) => {
+          button.addEventListener("mouseenter", () => {
+            button.style.transform = "translateY(-3px)";
+          });
+
+          button.addEventListener("mouseleave", () => {
+            button.style.transform = "translateY(0)";
+          });
+        });
+
+        window.addEventListener("beforeunload", () => {
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
